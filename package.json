@@ -1,21 +1,21 @@
 {
   "name": "gulp-css-to-polymer",
   "version": "1.2.3",
-  "description": "Converting CSS to a ES6 Module for Polymer V3.x.x",
+  "description": "Converting CSS to a ES6 Module for Polymer V3.x.x forked repo https://github.com/tommaton/gulp-css-to-polymer ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tommaton/gulp-css-to-polymer.git"
+    "url": "git+https://github.com/hakamaq/gulp-css-to-polymer.git"
   },
-  "author": "Tom Maton",
+  "author": "Hakam Abdelqader modified (Orginal author Tom Maton)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tommaton/gulp-css-to-polymer/issues"
+    "url": "https://github.com/hakamaq/gulp-css-to-polymer/issues"
   },
-  "homepage": "https://github.com/tommaton/gulp-css-to-polymer#readme",
+  "homepage": "https://github.com/hakamaq/gulp-css-to-polymer#readme",
   "devDependencies": {
     "gulp-util": "^3.0.8",
     "through2": "^2.0.3"

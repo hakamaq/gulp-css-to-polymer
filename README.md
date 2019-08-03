@@ -1,6 +1,8 @@
 # gulp-css-to-polymer
 
-A gulp plugin for wrapping css files into ES6 modules as used by [Polymer](http://polymer-project.org)
+A gulp plugin for converting css files into string exporting using ES6 modules. Helpful to import css in js
+
+Modified repo you can find original here https://github.com/tommaton/gulp-css-to-polymer
 
 ## Install
 
@@ -19,15 +21,14 @@ $ yarn add gulp-css-to-polymer
 ## Examples
 
 ```js
-const polymerizeCSS = require('gulp-css-to-polymer');
+const stringlize = require('gulp-css-to-string');
 
 // Wrap css files
 gulp.task("polymerize", () => {
     gulp.src("./src/**/*.css")
-        .pipe(polymerizeCSS({
+        .pipe(stringlize({
             prefix: 'tg-',
-            suffix: '-styles',
-            pwa: true
+            suffix: '-styles'
         }))
         .pipe(gulp.dest("./dist"));
 }
@@ -42,8 +43,6 @@ gulp.task("polymerize", () => {
     prefix: 'tg-',
     // string to be used for the end of the file name & module ids.
     suffix: '-styles',
-    // boolean, determines how the styles are generated as differentate between Polymer and Polymer PWA
-    pwa: true // default is false,
 }
 ```
 
