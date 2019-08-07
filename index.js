@@ -16,14 +16,7 @@ const generateModuleName = (options, file) => `${options.prefix}${path.basename(
 
 // const generatePWAStyle = (styles, moduleId) => (`import { html } from '@polymer/lit-element';
 // export const ${camelCaseModuleId(moduleId)} = html \`
-const generatePWAStyle = (styles, moduleId) => (`
-
-            export const ${camelCaseModuleId(moduleId)} =  \`
-            <style>
-                ${styles.toString('utf8')}
-            </style>\`;
-            `
-);
+const generatePWAStyle = (string, moduleId) => (`export default ${camelCaseModuleId(moduleId)} =  \`${string.toString('utf8')}\`;`);
 
 module.exports = opts => through.obj((file, enc, cb) => {
     const fileObj = file;
