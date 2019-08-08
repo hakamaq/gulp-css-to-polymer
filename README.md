@@ -1,4 +1,4 @@
-# gulp-css-to-polymer
+# gulp-polymer-string
 
 A gulp plugin for converting css files into string exporting using ES6 modules. Helpful to import css in js
 
