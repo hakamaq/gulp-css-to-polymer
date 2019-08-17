@@ -18,7 +18,7 @@ const generateTemplate = (string, moduleId) => (`export const ${camelCaseModuleI
 
 const concatTransform = (options) => {
     if (!options || typeof options !== 'string') {
-        return done(new gutil.PluginError(PLUGIN_NAME, `Option 'concat' must be a non-empty string, got: ${options}`));
+       throw Error(`Option 'concat' must be a non-empty string, got: ${options}`)
     }
     let lines = [];
     let fileObj = {};

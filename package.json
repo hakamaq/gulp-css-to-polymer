@@ -1,6 +1,6 @@
 {
   "name": "gulp-export-html",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Converting HTML to a ES6 Module for Polymer V3.x.x forked repo https://github.com/tommaton/gulp-css-to-polymer ",
   "main": "index.js",
   "scripts": {
