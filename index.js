@@ -51,15 +51,6 @@ const concatTransform = (options) => {
     );
 }
 
-// Windows path to Unix path
-// function toUnixPath(text) {
-//     return text.replace(/\\/g, '/')
-// }
-
-// function escape(text) {
-//     return text.replace(/'/g, "\\'").replace(/\r\n|\n/g, '\\n')
-// }
-
 const separateTransform = (options) => {
     return through.obj((file, enc, done) => {
         if (file.isStream()) {
