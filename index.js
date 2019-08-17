@@ -12,16 +12,16 @@ const camelCaseModuleId = (moduleId) => {
     });
 };
 
-const generateModuleName = (options, file) => `${options.prefix}${path.basename(file.path, path.extname(file.path))}${options.suffix}`;
+const generateModuleName = (options, file) => camelCaseModuleId(`${options.prefix}${path.basename(file.path, path.extname(file.path))}${options.suffix}`);
 
-const generateTemplate = (string, moduleId) => (`export const ${camelCaseModuleId(moduleId)} =  \`${string.toString('utf8')}\`; \n `);
+const generateTemplate = (string, moduleId) => (`export const ${moduleId} =  \`${string.toString('utf8')}\`; \n `);
 
-const concatTransform = ({ options }) => {
+const concatTransform = (options) => {
     if (!options.concat || typeof options.concat !== 'string') {
-        return done(new gutil.PluginError(PLUGIN_NAME, `Option 'concat' must be a non-empty string, got: ${concat}`));
+        throw Error(`Option 'concat' must be a non-empty string, got: ${options}`)
     }
     let lines = [];
-    let fileObj = {};
+    let filesList = [];
     return through.obj((file, enc, done) => {
 
         if (file.isStream()) {
@@ -31,16 +31,17 @@ const concatTransform = ({ options }) => {
             return done(null, file);
         }
 
-        const moduleId = generateModuleName(options, file);
+        const moduleId = generateModuleName(options, file)
         const result = generateTemplate(file.contents, moduleId)
+        filesList.push(moduleId);
 
         if (file.isBuffer()) {
             lines.push(result)
         }
         done()
     },
-        (done) => { // flush function
-            lines.push(`export default ${fileObj}`)
+        function (done) { // flush function
+            lines.push(`export default {${fileObj.join(', ')}}`)
             this.push(new File({
                 path: options.concat,
                 contents: Buffer.from(lines.join('\n')),
