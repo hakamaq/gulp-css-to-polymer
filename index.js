@@ -41,7 +41,7 @@ const concatTransform = (options) => {
         done()
     },
         function (done) { // flush function
-            lines.push(`export default {${fileObj.join(', ')}}`)
+            lines.push(`export default {${filesList.join(', ')}}`)
             this.push(new File({
                 path: options.concat,
                 contents: Buffer.from(lines.join('\n')),
