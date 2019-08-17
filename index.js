@@ -17,8 +17,8 @@ const generateModuleName = (options, file) => `${options.prefix}${path.basename(
 const generateTemplate = (string, moduleId) => (`export const ${camelCaseModuleId(moduleId)} =  \`${string.toString('utf8')}\`; \n `);
 
 const concatTransform = (options) => {
-    if (!options || typeof options !== 'string') {
-       throw Error(`Option 'concat' must be a non-empty string, got: ${options}`)
+    if (!options.concat || typeof options.concat !== 'string') {
+       throw Error(`Option 'concat' must be a non-empty string, got: ${options.concat}`)
     }
     let lines = [];
     let fileObj = {};
@@ -39,7 +39,7 @@ const concatTransform = (options) => {
         }
         done()
     },
-        (done) => { // flush function
+        function (done) { // flush function
             lines.push(`export default ${fileObj}`)
             this.push(new File({
                 path: options.concat,
