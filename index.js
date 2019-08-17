@@ -16,9 +16,9 @@ const generateModuleName = (options, file) => `${options.prefix}${path.basename(
 
 const generateTemplate = (string, moduleId) => (`export const ${camelCaseModuleId(moduleId)} =  \`${string.toString('utf8')}\`; \n `);
 
-const concatTransform = ({ options }) => {
-    if (!options.concat || typeof options.concat !== 'string') {
-        return done(new gutil.PluginError(PLUGIN_NAME, `Option 'concat' must be a non-empty string, got: ${concat}`));
+const concatTransform = (options) => {
+    if (!options || typeof options !== 'string') {
+        return done(new gutil.PluginError(PLUGIN_NAME, `Option 'concat' must be a non-empty string, got: ${options}`));
     }
     let lines = [];
     let fileObj = {};
