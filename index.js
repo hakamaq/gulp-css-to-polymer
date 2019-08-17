@@ -39,7 +39,7 @@ const concatTransform = ({ options }) => {
         }
         done()
     },
-        function (done) { // flush function
+        (done) => { // flush function
             lines.push(`export default ${fileObj}`)
             this.push(new File({
                 path: options.concat,
@@ -85,6 +85,8 @@ const separateTransform = (options) => {
 
 module.exports = opts => {
     opts = Object.assign({}, opts)
-    if (opts.concat) return concatTransform(opts)
+    if (opts.concat) {
+        return concatTransform(opts)
+    }
     return separateTransform(opts);
 };
